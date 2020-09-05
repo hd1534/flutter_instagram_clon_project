@@ -35,6 +35,26 @@ class HomePage extends StatelessWidget {
                   child: Card(
                     child: Column(
                       children: [
+                        SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage('https://npconsultingmfo.com/wp-content/uploads/2019/06/ferrari-sf90-stradale.jpg'),
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.all(8.0)),
+                        Text("이메일 주소", style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text("이름"),
+                        Padding(padding: EdgeInsets.all(8.0)),
+
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 100,
+                            )
+                          ],
+                        ),
+
                         RaisedButton(
                           child: Text("팔로우"),
                           color: Colors.blue,
