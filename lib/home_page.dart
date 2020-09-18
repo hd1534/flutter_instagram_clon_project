@@ -33,13 +33,14 @@ class HomePage extends StatelessWidget {
                 SizedBox(  // 감싸고 있는 자식 위젯의 크기 조절
                   width: 260,
                   child: Card(
+                    elevation: 4,  // 그림자
                     child: Column(
                       children: [
                         SizedBox(
                           width: 80,
                           height: 80,
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage('https://npconsultingmfo.com/wp-content/uploads/2019/06/ferrari-sf90-stradale.jpg'),
+                            backgroundImage: NetworkImage('https://cdn.motor1.com/images/mgl/JEkOE/s4/ferrari-fxx-k-evo.jpg'),
                           ),
                         ),
                         Padding(padding: EdgeInsets.all(8.0)),
@@ -48,12 +49,35 @@ class HomePage extends StatelessWidget {
                         Padding(padding: EdgeInsets.all(8.0)),
 
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 100,
-                            )
+                              width: 70,
+                              height: 70,
+                              child: Image.network("https://cdn.motor1.com/images/mgl/JEkOE/s4/ferrari-fxx-k-evo.jpg", fit: BoxFit.cover,),
+                            ),
+                            Padding(padding: EdgeInsets.all(1.0)),
+
+                            SizedBox(
+                              width: 70,
+                              height: 70,
+                              child: Image.network("https://cdn.motor1.com/images/mgl/JEkOE/s4/ferrari-fxx-k-evo.jpg"),
+                            ),
+                            Padding(padding: EdgeInsets.all(1.0)),
+
+                            SizedBox(
+                              width: 70,
+                              height: 70,
+                              child: Image.network("https://cdn.motor1.com/images/mgl/JEkOE/s4/ferrari-fxx-k-evo.jpg"),
+                            ),
+                            Padding(padding: EdgeInsets.all(1.0)),
+
                           ],
                         ),
+
+                        Text("Facebook 친구"),
+                        Padding(padding: EdgeInsets.all(8.0)),
+
 
                         RaisedButton(
                           child: Text("팔로우"),
