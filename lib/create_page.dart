@@ -11,6 +11,7 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final textEditingController = TextEditingController();
 
+  final picker = ImagePicker();
   File _image;
 
   @override
@@ -59,11 +60,11 @@ class _CreatePageState extends State<CreatePage> {
     );
   }
 
-  _getImage() async {
-    var image =  await ImagePicker.pickImage(source: ImageSource.gallery);
+  Future _getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
-      _image = image;
+      _image = File(pickedFile.path);
     });
   }
 }
