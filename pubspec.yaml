@@ -26,8 +26,14 @@ dependencies:
 
   # image picker
   image_picker: ^0.6.7+9
-  # oauth ?
+  # signin button (icon)
   flutter_signin_button: ^1.1.0
+  # google sign in
+  google_sign_in: ^4.5.3
+  # firebase core
+  firebase_core: ^0.5.0
+  # firebase auth
+  firebase_auth: ^0.18.0+1
 
 
   # The following adds the Cupertino Icons font to your application.
