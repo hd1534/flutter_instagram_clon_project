@@ -46,14 +46,16 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   _buildBody() {
-    return Column(
-      children: [
-        _image == null ? Text("No Image") : Image.file(_image),
-        TextField(
-          decoration: InputDecoration(hintText: "내용을 입력하세요"),
-          controller: textEditingController,
-        )
-      ],
+    return SingleChildScrollView(  // 공간이 부족시 스크롤 되게 (안하면 공간 부족시 에러)
+      child: Column(
+        children: [
+          _image == null ? Text("No Image") : Image.file(_image),
+          TextField(
+            decoration: InputDecoration(hintText: "내용을 입력하세요"),
+            controller: textEditingController,
+          )
+        ],
+      ),
     );
   }
 
