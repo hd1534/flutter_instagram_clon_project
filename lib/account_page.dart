@@ -4,6 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AccountPage extends StatefulWidget {
+  final User user;
+
+  AccountPage(this.user);
+
   @override
   _AccountPageState createState() => _AccountPageState();
 }
@@ -46,8 +50,7 @@ class _AccountPageState extends State<AccountPage> {
                     width: 80,
                     height: 80,
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://img.brickowl.com/files/image_cache/larger/lego-universe-bob-minifigure-25.jpg"),
+                      backgroundImage: NetworkImage(widget.user.photoURL),
                     ),
                   ),
                   Container(
@@ -83,7 +86,7 @@ class _AccountPageState extends State<AccountPage> {
                 padding: EdgeInsets.all(8),
               ),
               Text(
-                "이름",
+                widget.user.displayName,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               )
             ],
