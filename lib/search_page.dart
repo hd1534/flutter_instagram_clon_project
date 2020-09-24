@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagramclon/create_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,21 +30,33 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _buildBody() {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1,
-            mainAxisSpacing: 1,
-            crossAxisSpacing: 1),
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return _buildListItem(context, index);
-        });
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection("post").snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) {
+          return Center(child: CircularProgressIndicator(),);
+        }
+
+        var items = snapshot.data?.docs ?? [];  // null일때 초기화
+
+        return GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 1,
+                mainAxisSpacing: 1,
+                crossAxisSpacing: 1),
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              print(items[index]);
+              return _buildListItem(context, items[index]);
+            });
+      },
+    );
   }
 
-  _buildListItem(context, index) {
+  _buildListItem(context, document) {
     return Image.network(
-      "https://www.bugatti.com/fileadmin/_processed_/sei/p245/se-image-a58e30ad906c90155912fb3ad490ab6b.jpg",
+      document.get('photoURL'),
       fit: BoxFit.cover,
     );
   }
