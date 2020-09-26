@@ -48,7 +48,6 @@ class _SearchPageState extends State<SearchPage> {
                 crossAxisSpacing: 1),
             itemCount: items.length,
             itemBuilder: (context, index) {
-              print(items[index]);
               return _buildListItem(context, items[index]);
             });
       },

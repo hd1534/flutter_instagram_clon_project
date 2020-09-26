@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +14,21 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+
+  int _postCount = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FirebaseFirestore.instance.collection('post').where(
+        'writer.email', isEqualTo: widget.user.email).get().then((snapshot) {
+      setState(() {
+        _postCount = snapshot.docs.length;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +108,7 @@ class _AccountPageState extends State<AccountPage> {
             ],
           ),
           Text(
-            "0\n게시물",
+            "$_postCount\n게시물",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 18),
           ),
