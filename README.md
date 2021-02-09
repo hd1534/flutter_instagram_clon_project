@@ -2,6 +2,12 @@
 
 인스타 그램 따라 만들기
 
+```
+주의사항 :
+ .\instagram_clon\android\app\google-services.json 을 추가해줘야 작동함
+ 참고 : https://firebase.google.com/docs/flutter/setup
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
